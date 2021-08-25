@@ -1,7 +1,7 @@
 // La Liga 2019-2020
 // MATCH (sx:Season {season_id: 42, competition_id: 11 })
 MATCH (sx:Season)
-WHERE NOT exists((sx)-[:HAS_COMPETITION_STAGE]->())
+// WHERE NOT exists((sx)-[:HAS_COMPETITION_STAGE]->())
 
 CALL apoc.load.json('file:///matches/'+ sx.competition_id + '/'+ sx.season_id +'.json') YIELD value
 
@@ -50,30 +50,32 @@ SET m.name = CASE WHEN exists(value.home_score) AND exists(value.away_score)
 MERGE (w)-[:HAS_MATCH]->(m)
 
 // Referee
-FOREACH (_ IN CASE WHEN value.referee.id IS NOT NULL THEN [1] ELSE [] END |
-    MERGE (r:Referee { id: value.referee.id })
-    ON CREATE SET r.name = value.referee.name
+// FOREACH (_ IN CASE WHEN value.referee.id IS NOT NULL THEN [1] ELSE [] END |
+//     MERGE (r:Referee { id: value.referee.id })
+//     ON CREATE SET r.name = value.referee.name
 
-    // -> Referee Country
-    MERGE (rc:Country {id: value.referee.country.id})
-    ON CREATE SET rc.name = value.referee.country.name
+//     // -> Referee Country
+//     MERGE (rc:Country {id: value.referee.country.id})
+//     ON CREATE SET rc.name = value.referee.country.name
 
-    MERGE (r)-[:FROM_COUNTRY]->(rc)
-    MERGE (m)-[:HAS_REFEREE]->(r)
-)
+//     MERGE (r)-[:FROM_COUNTRY]->(rc)
+//     MERGE (m)-[:HAS_REFEREE]->(r)
+// )
 
 
 // Stadium
-MERGE (st:Stadium {id: value.stadium.id})
-ON CREATE SET st.name = value.stadium.name
+FOREACH (_ IN CASE WHEN value.stadium IS NOT NULL THEN [1] ELSE [] END |
+    MERGE (st:Stadium {id: value.stadium.id})
+    ON CREATE SET st.name = value.stadium.name
 
-// -> Stadium Country
-MERGE (stc:Country {id: value.stadium.country.id})
-ON CREATE SET stc.name = value.stadium.country.name
+    // -> Stadium Country
+    MERGE (stc:Country {id: value.stadium.country.id})
+    ON CREATE SET stc.name = value.stadium.country.name
 
-MERGE (st)-[:IN_COUNTRY]->(stc)
+    MERGE (st)-[:IN_COUNTRY]->(stc)
 
-MERGE (m)-[:AT_STADIUM]->(st)
+    MERGE (m)-[:AT_STADIUM]->(st)
+)
 
 
 // Home Team

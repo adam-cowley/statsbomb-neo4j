@@ -16,7 +16,7 @@ MERGE (m)-[:HAS_PERIOD]->(mp)
 
 MERGE (e:Event {id: value.id})
 SET e += value {
-        .minute, .second, .possession
+        .minute, .second, .possession, .index
     },
     e.timestamp = localtime(value.timestamp),
     e.playPattern = value.play_pattern.name,
