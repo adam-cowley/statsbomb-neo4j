@@ -1,0 +1,6 @@
+1. Setup import
+
+[source,conf]
+dbms.directories.import=/Users/adam/projects/statsbomb/open-data/data
+# ...
+apoc.import.file.enabled=true

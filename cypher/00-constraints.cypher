@@ -1,0 +1,33 @@
+CREATE CONSTRAINT ON (n:Competition) ASSERT n.id IS UNIQUE;
+CREATE CONSTRAINT ON (n:Season) ASSERT n.id IS UNIQUE;
+CREATE CONSTRAINT ON (n:Season) ASSERT (n.competition_id, n.season_id) IS NODE KEY;
+
+
+CREATE CONSTRAINT ON (n:CompetitionStage) ASSERT n.id IS UNIQUE;
+CREATE CONSTRAINT ON (n:CompetitionStage) ASSERT (n.competition_id, n.season_id, n.number) IS NODE KEY;
+
+CREATE CONSTRAINT ON (n:MatchWeek) ASSERT (n.competition_id, n.season_id, n.matchweek) IS NODE KEY;
+
+CREATE CONSTRAINT ON (n:Match) ASSERT n.id IS UNIQUE;
+
+CREATE CONSTRAINT ON (n:Country) ASSERT n.id IS UNIQUE;
+
+CREATE CONSTRAINT ON (n:Team) ASSERT (n.id, n.gender) IS NODE KEY;
+CREATE CONSTRAINT ON (n:Person) ASSERT n.id IS UNIQUE;
+
+
+CREATE CONSTRAINT ON (m:ManagerSeason) ASSERT m.id IS UNIQUE;
+CREATE CONSTRAINT ON (m:TeamSeason) ASSERT m.id IS UNIQUE;
+
+CREATE CONSTRAINT ON (m:Appearance) ASSERT m.id IS UNIQUE;
+
+CREATE CONSTRAINT ON (m:MatchPeriod) ASSERT m.id IS UNIQUE;
+CREATE CONSTRAINT ON (m:Event) ASSERT m.id IS UNIQUE;
+
+
+CREATE CONSTRAINT ON (m:Formation) ASSERT m.id IS UNIQUE;
+CREATE CONSTRAINT ON (m:Position) ASSERT m.name IS UNIQUE;
+
+
+CREATE INDEX ON :Player(name);
+CREATE INDEX ON :Player(nickname);
