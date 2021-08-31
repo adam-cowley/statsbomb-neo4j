@@ -4,11 +4,12 @@ DELETE r;
 
 // Collect events by match period
 CALL apoc.periodic.iterate("
-    MATCH (m:Match)-[:HAS_PERIOD]->(mp)<-[:HAS_EVENT]->(e)
+    MATCH (mp:MatchPeriod)<-[:HAS_EVENT]->(e)
     WITH mp, e ORDER BY e.index ASC
     RETURN mp, collect(e) AS events
 ", "
     CALL apoc.nodes.link(events, 'NEXT_EVENT')
+    RETURN distinct true
 ", {
     parallel: true,
     iterateList: true,

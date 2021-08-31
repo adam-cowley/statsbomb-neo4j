@@ -1,7 +1,7 @@
 // La Liga 2019-2020
 // MATCH (sx:Season {season_id: 42, competition_id: 11 })
 MATCH (sx:Season)
-// WHERE NOT exists((sx)-[:HAS_COMPETITION_STAGE]->())
+WHERE NOT exists((sx)-[:HAS_COMPETITION_STAGE]->())
 
 CALL apoc.load.json('file:///matches/'+ sx.competition_id + '/'+ sx.season_id +'.json') YIELD value
 
@@ -182,6 +182,4 @@ FOREACH (manager IN value.away_team.managers |
     MERGE (p)-[:FROM_COUNTRY]->(pc)
 )
 
-
-
-RETURN *
+RETURN count(*);
