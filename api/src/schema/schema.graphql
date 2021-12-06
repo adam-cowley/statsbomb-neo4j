@@ -1,0 +1,385 @@
+type _50506 @node(label: "5050", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	fiftyFiftyOutcome: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean!
+}
+
+type Appearance {
+	id: String!
+	inPositionPositions: [Position!]! @relationship(type: "IN_POSITION", direction: OUT)
+	inSeasonSeasons: [Season!]! @relationship(type: "IN_SEASON", direction: OUT)
+	inSquadSquads: [Squad!]! @relationship(type: "IN_SQUAD", direction: OUT, properties: "InSquadProperties")
+	name: String!
+	number: BigInt
+	playersHasAppearance: [Player!]! @relationship(type: "HAS_APPEARANCE", direction: IN)
+	startingElevenForMatches: [Match!]! @relationship(type: "STARTING_ELEVEN_FOR", direction: OUT)
+}
+
+interface AwayTeamForProperties @relationshipProperties {
+	goals: BigInt!
+}
+
+type BadBehaviour5 @node(label: "BadBehaviour", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+}
+
+type BallReceipt9 @node(label: "BallReceipt", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean
+}
+
+type BallRecovery9 @node(label: "BallRecovery", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean
+}
+
+type Block9 @node(label: "Block", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean
+}
+
+type Carry9 @node(label: "Carry", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	endLocation: Point!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean
+}
+
+type Clearance7 @node(label: "Clearance", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	clearanceBodyPart: String!
+	clearanceHead: Boolean
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean!
+}
+
+type Competition {
+	hasSeasonSeasons: [Season!]! @relationship(type: "HAS_SEASON", direction: OUT)
+	id: BigInt!
+	name: String!
+}
+
+type CompetitionStage {
+	competition_id: BigInt!
+	hasMatchWeekMatchWeeks: [MatchWeek!]! @relationship(type: "HAS_MATCH_WEEK", direction: OUT)
+	id: String!
+	name: String!
+	number: BigInt!
+	season_id: BigInt!
+	seasonsHasCompetitionStage: [Season!]! @relationship(type: "HAS_COMPETITION_STAGE", direction: IN)
+}
+
+type Country {
+	id: BigInt!
+	name: String!
+	peopleFromCountry: [Person!]! @relationship(type: "FROM_COUNTRY", direction: IN)
+	playersFromCountry: [Player!]! @relationship(type: "FROM_COUNTRY", direction: IN)
+	stadiumsInCountry: [Stadium!]! @relationship(type: "IN_COUNTRY", direction: IN)
+	teamsInCountry: [Team!]! @relationship(type: "IN_COUNTRY", direction: IN)
+}
+
+
+
+type Dispossessed8 @node(label: "Dispossessed", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean!
+}
+
+type Dribble8 @node(label: "Dribble", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean!
+}
+
+type DribbledPast8 @node(label: "DribbledPast", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+}
+
+type Duel8 @node(label: "Duel", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duelOutcome: String
+	duelType: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+	underPressure: Boolean!
+}
+
+type Enrolment {
+	createdAt: DateTime!
+	forCourseCourses: [Course!]! @relationship(type: "FOR_COURSE", direction: OUT)
+	id: String!
+	usersHasEnrolment: [User!]! @relationship(type: "HAS_ENROLMENT", direction: IN)
+}
+
+type Error6 @node(label: "Error", additionalLabels: ["Event","RegularPlay"]) {
+	caption: String!
+	duration: String!
+	id: String!
+	index: BigInt!
+	location: Point!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+}
+
+type Event143 @node(label: "Event", additionalLabels: ["FromThrowIn","HalfStart"]) {
+	duration: String!
+	id: String!
+	index: BigInt!
+	minute: BigInt!
+	playPattern: String!
+	possession: BigInt!
+	second: BigInt!
+	timestamp: LocalTime!
+	type: String!
+}
+
+type Formation {
+	id: BigInt!
+}
+
+interface FreezeFrameProperties @relationshipProperties {
+	location: Point!
+	position: String!
+	teammate: Boolean!
+}
+
+interface HomeTeamForProperties @relationshipProperties {
+	goals: BigInt!
+}
+
+interface InCategoryProperties @relationshipProperties {
+	order: String!
+}
+
+interface InSquadProperties @relationshipProperties {
+	number: BigInt!
+}
+
+type ManagerSeason {
+	awayManagerForMatches: [Match!]! @relationship(type: "AWAY_MANAGER_FOR", direction: OUT)
+	forSeasonSeasons: [Season!]! @relationship(type: "FOR_SEASON", direction: OUT)
+	forTeamTeams: [Team!]! @relationship(type: "FOR_TEAM", direction: OUT)
+	homeManagerForMatches: [Match!]! @relationship(type: "HOME_MANAGER_FOR", direction: OUT)
+	id: String!
+	name: String!
+	peopleWasManager: [Person!]! @relationship(type: "WAS_MANAGER", direction: IN)
+}
+
+type Match {
+	appearancesStartingElevenFor: [Appearance!]! @relationship(type: "STARTING_ELEVEN_FOR", direction: IN)
+	atStadiumStadiums: [Stadium!]! @relationship(type: "AT_STADIUM", direction: OUT)
+	awayGoals: BigInt!
+	hasPeriodMatchPeriods: [MatchPeriod!]! @relationship(type: "HAS_PERIOD", direction: OUT)
+	homeGoals: BigInt!
+	id: BigInt!
+	kickoff: LocalDateTime!
+	managerSeasonsAwayManagerFor: [ManagerSeason!]! @relationship(type: "AWAY_MANAGER_FOR", direction: IN)
+	managerSeasonsHomeManagerFor: [ManagerSeason!]! @relationship(type: "HOME_MANAGER_FOR", direction: IN)
+	matchWeeksHasMatch: [MatchWeek!]! @relationship(type: "HAS_MATCH", direction: IN)
+	name: String!
+	squadsAwayTeamFor: [Squad!]! @relationship(type: "AWAY_TEAM_FOR", direction: IN, properties: "AwayTeamForProperties")
+	squadsHomeTeamFor: [Squad!]! @relationship(type: "HOME_TEAM_FOR", direction: IN, properties: "HomeTeamForProperties")
+	status: String!
+	updatedAt: LocalDateTime!
+}
+
+type MatchPeriod {
+	id: String!
+	matchesHasPeriod: [Match!]! @relationship(type: "HAS_PERIOD", direction: IN)
+}
+
+type MatchWeek {
+	competitionStagesHasMatchWeek: [CompetitionStage!]! @relationship(type: "HAS_MATCH_WEEK", direction: IN)
+	competition_id: BigInt!
+	hasMatchMatches: [Match!]! @relationship(type: "HAS_MATCH", direction: OUT)
+	id: String!
+	matchweek: BigInt!
+	name: String!
+	season_id: BigInt!
+}
+
+type Person {
+	dob: Date
+	fromCountryCountries: [Country!]! @relationship(type: "FROM_COUNTRY", direction: OUT)
+	id: BigInt!
+	name: String!
+	nickname: String
+	wasManagerManagerSeasons: [ManagerSeason!]! @relationship(type: "WAS_MANAGER", direction: OUT)
+}
+
+type Player {
+	fromCountryCountries: [Country!]! @relationship(type: "FROM_COUNTRY", direction: OUT)
+	hasAppearanceAppearances: [Appearance!]! @relationship(type: "HAS_APPEARANCE", direction: OUT)
+	id: BigInt!
+	name: String!
+	nickname: String
+}
+
+type Position {
+	appearancesInPosition: [Appearance!]! @relationship(type: "IN_POSITION", direction: IN)
+	name: String!
+}
+
+type Question {
+	id: String!
+	lessonsHasQuestion: [Lesson!]! @relationship(type: "HAS_QUESTION", direction: IN)
+	slug: String!
+	text: String!
+}
+
+type Season {
+	appearancesInSeason: [Appearance!]! @relationship(type: "IN_SEASON", direction: IN)
+	competition_id: BigInt!
+	competitionsHasSeason: [Competition!]! @relationship(type: "HAS_SEASON", direction: IN)
+	hasCompetitionStageCompetitionStages: [CompetitionStage!]! @relationship(type: "HAS_COMPETITION_STAGE", direction: OUT)
+	id: String!
+	managerSeasonsForSeason: [ManagerSeason!]! @relationship(type: "FOR_SEASON", direction: IN)
+	name: String!
+	season_id: BigInt!
+	teamSeasonsInSeason: [TeamSeason!]! @relationship(type: "IN_SEASON", direction: IN)
+}
+
+type Squad {
+	appearancesInSquad: [Appearance!]! @relationship(type: "IN_SQUAD", direction: IN, properties: "InSquadProperties")
+	awayTeamForMatches: [Match!]! @relationship(type: "AWAY_TEAM_FOR", direction: OUT, properties: "AwayTeamForProperties")
+	homeTeamForMatches: [Match!]! @relationship(type: "HOME_TEAM_FOR", direction: OUT, properties: "HomeTeamForProperties")
+	id: String!
+	name: String!
+	teamSeasonsHasSquad: [TeamSeason!]! @relationship(type: "HAS_SQUAD", direction: IN)
+}
+
+type Stadium {
+	id: BigInt!
+	inCountryCountries: [Country!]! @relationship(type: "IN_COUNTRY", direction: OUT)
+	matchesAtStadium: [Match!]! @relationship(type: "AT_STADIUM", direction: IN)
+	name: String!
+}
+
+interface TacticalChangeProperties @relationshipProperties {
+	position: String!
+}
+
+type Team {
+	fullName: String!
+	gender: String!
+	hasSeasonTeamSeasons: [TeamSeason!]! @relationship(type: "HAS_SEASON", direction: OUT)
+	id: BigInt!
+	inCountryCountries: [Country!]! @relationship(type: "IN_COUNTRY", direction: OUT)
+	managerSeasonsForTeam: [ManagerSeason!]! @relationship(type: "FOR_TEAM", direction: IN)
+	name: String!
+}
+
+type TeamSeason {
+	hasSquadSquads: [Squad!]! @relationship(type: "HAS_SQUAD", direction: OUT)
+	id: String!
+	inSeasonSeasons: [Season!]! @relationship(type: "IN_SEASON", direction: OUT)
+	name: String!
+	teamsHasSeason: [Team!]! @relationship(type: "HAS_SEASON", direction: IN)
+}
