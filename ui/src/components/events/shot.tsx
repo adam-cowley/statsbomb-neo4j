@@ -5,7 +5,7 @@ import { PlayerMarker } from "../player-marker"
 import { EventLabel } from "./label"
 
 export function ShotEvent({ event, xScale, yScale }: EventProps) {
-  const freeze = event.shot.freeze_frame.map((player: any) => <PlayerMarker
+  const freeze = event.shot.freeze_frame?.map((player: any) => <PlayerMarker
     key={player.player.id}
     x={xScale(player.location[0])}
     y={yScale(player.location[1])}
