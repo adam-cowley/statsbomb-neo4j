@@ -1,1 +1,5 @@
 .DS_Store
+Neo4j*.txt
+.env
+__pycache__
+.venv

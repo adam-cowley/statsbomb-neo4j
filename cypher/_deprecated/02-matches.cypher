@@ -39,7 +39,7 @@ SET m.name = CASE WHEN exists(value.home_score) AND exists(value.away_score)
     ELSE
         value.match_date + ' - ' + value.home_team.home_team_name + ' vs ' + value.away_team.away_team_name
     END,
-    m.kickoff = localdatetime(value.match_date + 'T' + value.kick_off),
+    m.kick_off = localdatetime(value.match_date + 'T' + value.kick_off),
     m.homeGoals = value.home_score,
     m.awayGoals = value.away_score,
 
@@ -99,7 +99,7 @@ MERGE (hts)-[:IN_SEASON]->(sx)
 
 // -> Home Team Squad
 MERGE (htsq:Squad {id: m.id + '--'+ ht.id})
-SET htsq.name = toString(m.kickoff) + ': '+ ht.name +' (Home vs. '+ value.away_team.away_team_name +')'
+SET htsq.name = toString(m.kick_off) + ': '+ ht.name +' (Home vs. '+ value.away_team.away_team_name +')'
 MERGE (hts)-[:HAS_SQUAD]->(htsq)
 
 // -> Fixture
@@ -152,7 +152,7 @@ MERGE (ats)-[:IN_SEASON]->(sx)
 
 // -> Home Team Squad
 MERGE (atsq:Squad {id: m.id + '--'+ at.id})
-SET atsq.name = toString(m.kickoff) + ': '+ at.name +' (Away vs. '+ ht.name +')'
+SET atsq.name = toString(m.kick_off) + ': '+ at.name +' (Away vs. '+ ht.name +')'
 MERGE (ats)-[:HAS_SQUAD]->(atsq)
 
 // -> Fixture

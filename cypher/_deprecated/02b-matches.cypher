@@ -24,7 +24,7 @@ SET
     ELSE
         value.match_date + ' - ' + value.home_team.home_team_name + ' vs ' + value.away_team.away_team_name
     END,
-    m.kickoff = localdatetime(value.match_date + 'T' + value.kick_off),
+    m.kick_off = localdatetime(value.match_date + 'T' + value.kick_off),
     m.homeGoals = value.home_score,
     m.awayGoals = value.away_score,
 
